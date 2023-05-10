@@ -94,3 +94,19 @@ addDogBtn.addEventListener('submit', (event) => {
 
     // Create a new dog object with the name, age, and photo URL
     const newDog = { name: name, age: age, photoUrl: photoUrl };
+
+        // Add the new dog to the server
+        fetch('http://localhost:3000/dogs', {
+            method: 'POST',
+            body: JSON.stringify(newDog),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Unable to add dog.');
+            }
+            return response.json();
+          })
+          .then(data => {
