@@ -17,3 +17,14 @@ const displayDogs = (dogs) => {
       removeDog(dog.id);
     });
     li.appendChild(removeBtn);
+
+     // Add photo
+     if (dog.photoUrl) {
+        const img = document.createElement('img');
+        img.src = dog.photoUrl;
+        li.appendChild(img);
+      }
+  
+      dogsList.appendChild(li);
+    });
+  }
