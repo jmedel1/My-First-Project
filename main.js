@@ -28,3 +28,22 @@ const displayDogs = (dogs) => {
       dogsList.appendChild(li);
     });
   }
+
+  // Remove dogs name
+const removeDog = (id) => {
+    fetch(`http://localhost:3000/dogs/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Unable to remove dog.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      fetchDogs();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
