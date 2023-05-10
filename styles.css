@@ -35,3 +35,12 @@ h1 {
     background-position: center;
     height: 500px;
   }
+
+  :root {
+    --primary-color: #a57c41;
+    --secondary-color: #5c8a5e;
+  }
+
+  body {
+    background-color: var(--primary-color);
+  }
