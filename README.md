@@ -19,3 +19,11 @@ Woof Pixels is a dog application where users can upload photos of their furry fr
 2. Enter your dog's name and age in the respective fields.
 3. Click on "Add Dog" to upload your dog's photo to the platform.
 4. To filter dogs by age, select the desired age range from the dropdown menu on the homepage.
+
+## Photo Credits
+
+We would like to give credit to the following individuals for providing the photos used on our platform:
+
+- Photo of French bulldog puppy sleeps on blanket by user12914223 on [Freepik](https://www.freepik.com/)
+
+Thank you to these individuals for their contributions to our platform.
