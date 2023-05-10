@@ -6,3 +6,9 @@ Woof Pixels is a dog application where users can upload photos of their furry fr
 - Upload photos of your dog
 - Provide your dog's name and age
 - Filter all dogs by age
+
+## Installation
+
+1. Clone this repository.
+2. Install the required dependencies using `npm install`.
+3. Run the application using `npm start`.
