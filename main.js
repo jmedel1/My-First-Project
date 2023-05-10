@@ -136,3 +136,11 @@ addDogBtn.addEventListener('submit', (event) => {
 
   // Get the form element
 const form = document.getElementById('add-dog-form');
+
+// Add an event listener for form submit
+form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the form from submitting
+    const name = document.getElementById('name-input').value;
+    const age = document.getElementById('age-input').value;
+    const photo = document.getElementById('photo-input').files[0];
+    
