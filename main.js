@@ -143,4 +143,8 @@ form.addEventListener('submit', (event) => {
     const name = document.getElementById('name-input').value;
     const age = document.getElementById('age-input').value;
     const photo = document.getElementById('photo-input').files[0];
+  
     
+     // Clear the form fields
+  form.reset();
+});
