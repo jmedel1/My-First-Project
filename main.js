@@ -53,3 +53,8 @@ const fetchDogs = async (sortBy = 'id') => {
     try {
       const response = await fetch(` http://localhost:3000/posts?_sort=${sortBy}`);
       const dogs = await response.json();
+
+      // Parse the age values as numbers before sorting
+      dogs.forEach(dog => {
+        dog.age = parseInt(dog.age);
+      });
