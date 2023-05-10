@@ -27,3 +27,7 @@ We would like to give credit to the following individuals for providing the phot
 - Photo of French bulldog puppy sleeps on blanket by user12914223 on [Freepik](https://www.freepik.com/)
 
 Thank you to these individuals for their contributions to our platform.
+
+## Contributing
+
+We welcome contributions from the community! If you have any ideas for new features or improvements, please create a pull request. You can also report any bugs or issues by creating a GitHub issue.
