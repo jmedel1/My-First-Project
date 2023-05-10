@@ -56,3 +56,18 @@ h1 {
   body {
     font-family: 'Open Sans', sans-serif;
   }
+
+  #sort-by-age-btn, #add-dog-form input[type="submit"] {
+    background-color: #704214;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+li {
+    font-weight: bold;
+  }
