@@ -119,3 +119,14 @@ addDogBtn.addEventListener('submit', (event) => {
       console.error(error);
     });
   });
+
+    //Adjusts photos to certain size
+    const MAX_FILE_SIZE = 1024 * 1024; // 1MB
+
+    const photoInput = document.getElementById('photo-input');
+    
+    photoInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+    
+      if (file && file.size > MAX_FILE_SIZE) {
+        alert('The selected photo is too large. Please select a file smaller than 1MB.');
