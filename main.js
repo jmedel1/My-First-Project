@@ -47,3 +47,9 @@ const removeDog = (id) => {
       console.error(error);
     });
   }
+
+  // Fetch dogs data from the server
+const fetchDogs = async (sortBy = 'id') => {
+    try {
+      const response = await fetch(` http://localhost:3000/posts?_sort=${sortBy}`);
+      const dogs = await response.json();
