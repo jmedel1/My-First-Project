@@ -133,3 +133,6 @@ addDogBtn.addEventListener('submit', (event) => {
         photoInput.value = null; // clear the file input field
     }
   });
+
+  // Get the form element
+const form = document.getElementById('add-dog-form');
