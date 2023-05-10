@@ -87,3 +87,7 @@ addDogBtn.addEventListener('submit', (event) => {
 
     // Get the file object from the photo input field
     const photoFile = document.getElementById('photo-input').files[0];
+
+    
+    // Create an object URL for the photo file
+    const photoUrl = window.URL.createObjectURL(photoFile);
