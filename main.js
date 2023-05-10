@@ -84,3 +84,6 @@ addDogBtn.addEventListener('submit', (event) => {
     // Get the dog name and age from the input fields
     const name = document.getElementById('name-input').value;
     const age = document.getElementById('age-input').value;
+
+    // Get the file object from the photo input field
+    const photoFile = document.getElementById('photo-input').files[0];
