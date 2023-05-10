@@ -148,3 +148,6 @@ form.addEventListener('submit', (event) => {
      // Clear the form fields
   form.reset();
 });
+
+// Load dogs on page load
+fetchDogs();
