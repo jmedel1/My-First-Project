@@ -8,3 +8,12 @@ const displayDogs = (dogs) => {
     dogs.forEach(dog => {
       const li = document.createElement('li');
       li.textContent = `Name: ${dog.name}, Age: ${dog.age}`;
+
+          // Add a remove button
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.classList.add('remove');
+    removeBtn.addEventListener('click', () => {
+      removeDog(dog.id);
+    });
+    li.appendChild(removeBtn);
