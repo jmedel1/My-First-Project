@@ -31,7 +31,7 @@ const displayDogs = (dogs) => {
 
   // Remove dogs name
 const removeDog = (id) => {
-    fetch(`http://localhost:3000/dogs/${id}`, {
+    fetch(`http://localhost:3000/posts/${id}`, {
       method: 'DELETE'
     })
     .then(response => {
@@ -96,7 +96,7 @@ addDogBtn.addEventListener('submit', (event) => {
     const newDog = { name: name, age: age, photoUrl: photoUrl };
 
         // Add the new dog to the server
-        fetch('http://localhost:3000/dogs', {
+        fetch('http://localhost:3000/posts', {
             method: 'POST',
             body: JSON.stringify(newDog),
             headers: {
