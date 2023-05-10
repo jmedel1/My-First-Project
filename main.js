@@ -67,3 +67,10 @@ const fetchDogs = async (sortBy = 'id') => {
          console.error(error);
        }
      };
+
+     // Add sort by age button
+const sortByAgeBtn = document.getElementById('sort-by-age-btn');
+
+sortByAgeBtn.addEventListener('click',() => {
+  fetchDogs('age');
+});
