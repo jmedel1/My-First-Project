@@ -31,3 +31,7 @@ Thank you to these individuals for their contributions to our platform.
 ## Contributing
 
 We welcome contributions from the community! If you have any ideas for new features or improvements, please create a pull request. You can also report any bugs or issues by creating a GitHub issue.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
