@@ -28,3 +28,10 @@ h1 {
     background-color: #8B4513;
     color: white;
   }
+
+  .hero-section {
+    background-image: url('https://img.freepik.com/premium-photo/french-bulldog-puppy-sleeps-blanket-top-view_106368-5980.jpg?w=2000');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
