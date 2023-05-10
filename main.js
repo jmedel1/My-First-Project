@@ -74,3 +74,9 @@ const sortByAgeBtn = document.getElementById('sort-by-age-btn');
 sortByAgeBtn.addEventListener('click',() => {
   fetchDogs('age');
 });
+
+// Add dog button
+const addDogBtn = document.getElementById('add-dog-form');
+
+addDogBtn.addEventListener('submit', (event) => {
+    event.preventDefault();
