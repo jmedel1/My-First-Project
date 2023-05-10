@@ -130,3 +130,6 @@ addDogBtn.addEventListener('submit', (event) => {
     
       if (file && file.size > MAX_FILE_SIZE) {
         alert('The selected photo is too large. Please select a file smaller than 1MB.');
+        photoInput.value = null; // clear the file input field
+    }
+  });
