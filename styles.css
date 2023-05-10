@@ -11,3 +11,20 @@ h1 {
     letter-spacing: 2px;
     margin-top: 40px;
   }
+
+  #dogs-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#dogs-list li {
+    padding: 10px;
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+.remove {
+    background-color: #8B4513;
+    color: white;
+  }
