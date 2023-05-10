@@ -58,3 +58,12 @@ const fetchDogs = async (sortBy = 'id') => {
       dogs.forEach(dog => {
         dog.age = parseInt(dog.age);
       });
+
+         // Sort the dogs by age
+         dogs.sort((a, b) => a.age - b.age);
+  
+         displayDogs(dogs);
+       } catch (error) {
+         console.error(error);
+       }
+     };
