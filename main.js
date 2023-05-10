@@ -80,3 +80,7 @@ const addDogBtn = document.getElementById('add-dog-form');
 
 addDogBtn.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    // Get the dog name and age from the input fields
+    const name = document.getElementById('name-input').value;
+    const age = document.getElementById('age-input').value;
