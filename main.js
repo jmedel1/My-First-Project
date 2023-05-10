@@ -91,3 +91,6 @@ addDogBtn.addEventListener('submit', (event) => {
     
     // Create an object URL for the photo file
     const photoUrl = window.URL.createObjectURL(photoFile);
+
+    // Create a new dog object with the name, age, and photo URL
+    const newDog = { name: name, age: age, photoUrl: photoUrl };
