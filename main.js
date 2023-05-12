@@ -71,16 +71,6 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
     };
   
     
-    // Initial render of the dog list
-    renderDogsList(dogsList, dogs);
-    
-    sortByAgeBtn.addEventListener("click", () => {
-      const order = sortByAgeSelect.value;
-      const sortedDogs = sortDogsByAge(dogs, order);
-      renderDogsList(dogsList, sortedDogs);
-    });
-    
-
     // Display the dogs
     displayDogs(dogs);
 
@@ -95,7 +85,10 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-fetchDogs('age', sortOrder.value === "sort-by-age-select");
+function sortDogsByAge() {
+  let sortOrder = document.getElementById("sort-by-age-select").value;
+  fetchDogs('age', sortOrder === "senior-to-puppy");
+}
 
 sortByAgeBtn.addEventListener('click',() => {
   const sortOrder = document.getElementById('sort-order').value;
