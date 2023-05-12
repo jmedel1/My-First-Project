@@ -53,22 +53,49 @@ const removeDog = (id) => {
 const fetchDogs = async (sortBy = 'id', reverse = false) => {
   try {
     const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
-    const dogs = await response.json();
+    let dogs = await response.json();
 
-    if (sortBy === 'age') {
-      // If sorting by age, use fetchAndSortDogs to sort the dogs
-      fetchAndSortDogs(dogs, reverse);
+    // Sort the dogs by the specified property in ascending order
+    dogs.sort((a, b) => a[sortBy] - b[sortBy]);
+
+    // If reverse is true, reverse the order of the dogs array
+    if (reverse) {
+      dogs.reverse();
     }
 
     return dogs;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-     // Add sort by age button
-const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-fetchDogs('age', sortOrder.value === sort-by-age-button);
+// Get the sort order dropdown element
+const sortOrderDropdown = document.getElementById('sort-order');
 
-sortByAgeBtn.addEventListener('click',() => {
-  fetchDogs('age');
+// Add a change event listener to the dropdown
+sortOrderDropdown.addEventListener('change', async () => {
+  // Get the selected value from the dropdown
+  const selectedValue = sortOrderDropdown.value;
+
+  // Set the sortBy and reverse parameters based on the selected value
+  let sortBy, reverse;
+  if (selectedValue === 'puppy-to-senior') {
+    sortBy = 'age';
+    reverse = false;
+  } else if (selectedValue === 'senior-to-puppy') {
+    sortBy = 'age';
+    reverse = true;
+  } else {
+    // Default to sorting by id in ascending order
+    sortBy = 'id';
+    reverse = false;
+  }
+
+  // Call the fetchDogs function with the selected parameters
+  const dogs = await fetchDogs(sortBy, reverse);
+  console.log(dogs); // Log the sorted dogs to the console
 });
+
 
 // Add dog button
 const addDogBtn = document.getElementById('add-dog-form');
