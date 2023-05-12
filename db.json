@@ -1,5 +1,18 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "name": "Nick",
+      "age": "4",
+      "photoUrl": "blob:null/8f647b63-538b-4749-9ca8-2b66d669a720",
+      "id": 1
+    },
+    {
+      "name": "Blast",
+      "age": "6",
+      "photoUrl": "blob:null/0365c70a-9801-46e8-8668-609fe61220a5",
+      "id": 2
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"
