@@ -59,22 +59,30 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
       dog.age = parseInt(dog.age);
     });
 
+    // Sort the dogs by age if requested
     const sortDogsByAge = (dogs, order) => {
       if (order === "puppy-to-senior") {
         return dogs.sort((a, b) => a.age - b.age);
       } else if (order === "senior-to-puppy") {
         return dogs.sort((a, b) => b.age - a.age);
       }
+      return dogs; // Return the original array if no order is specified
     };
-    
-    
-  
+
+    // Sort the dogs by age if requested
+    const sortedDogs = sortDogsByAge(dogs, 'puppy-to-senior');
+
     // Display the dogs
-    displayDogs(dogs);
+    displayDogs(sortedDogs);
 
     // Add event listener to the sort by age button
     const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-    sortByAgeBtn.addEventListener('click', sortDogsByAge);
+    sortByAgeBtn.addEventListener('click', () => {
+      const order = document.getElementById('age-sort-order').value;
+      const sortedDogs = sortDogsByAge(dogs, order);
+      displayDogs(sortedDogs);
+    });
+
   } catch (error) {
     console.error(error);
   }
