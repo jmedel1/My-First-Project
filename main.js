@@ -49,9 +49,14 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
-const fetchDogs = async (sortBy = 'id', sortOrder = false) => {
+const fetchDogs = async (sortBy = 'id', sortOrder = 'asc', sortAge = false) => {
   try {
-    const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}&_order=${sortOrder ? 'desc' : 'asc'}`);
+    let url = `http://localhost:3000/posts?_sort=${sortBy}&_order=${sortOrder}`;
+    if (sortAge) {
+      url += `&_sort=age&_order=${sortOrder}`;
+    }
+
+    const response = await fetch(url);
     const dogs = await response.json();
 
     // Parse the age values as numbers before sorting
@@ -59,18 +64,11 @@ const fetchDogs = async (sortBy = 'id', sortOrder = false) => {
       dog.age = parseInt(dog.age);
     });
 
-    function sortDogs() {
-      const ageSort = document.querySelector('input[name="age-sort"]:checked').value;
-      dogs.sort(function(a, b) {
-        if (ageSort === "young") {
-          return parseInt(a.age) - parseInt(b.age);
-        } else {
-          return parseInt(b.age) - parseInt(a.age);
-        }
-      });
-      displayDogs(dogs);
+    if (sortAge) {
+      dogs.reverse();
     }
-    return dogs;
+
+    displayDogs(dogs);
   } catch (error) {
     console.error(error);
   }
@@ -78,6 +76,7 @@ const fetchDogs = async (sortBy = 'id', sortOrder = false) => {
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
+fetchDogs('age', sortOrder.value === "sort-by-age-select");
 
 sortByAgeBtn.addEventListener('click',() => {
   const sortOrder = document.getElementById('sort-order').value;
