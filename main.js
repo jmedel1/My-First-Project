@@ -69,17 +69,7 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
         }
       });
     };
-    
-    const sortByAgeBtn = document.getElementById("sort-by-age-btn");
-    const sortByAgeSelect = document.getElementById("sort-by-age-select");
-    const dogsList = document.getElementById("dogs-list");
-    
-    // Assume you have an array of dogs in this format
-    const dogs = [
-      { name: "Buddy", age: 2, photo: "buddy.jpg" },
-      { name: "Max", age: 6, photo: "max.jpg" },
-      { name: "Rocky", age: 4, photo: "rocky.jpg" },
-    ];
+  
     
     // Initial render of the dog list
     renderDogsList(dogsList, dogs);
