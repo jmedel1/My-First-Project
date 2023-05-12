@@ -70,7 +70,6 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
       });
     };
   
-    
     // Display the dogs
     displayDogs(dogs);
 
@@ -81,7 +80,6 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
     console.error(error);
   }
 };
-
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
@@ -161,6 +159,46 @@ form.addEventListener('submit', (event) => {
   const name = document.getElementById('name-input').value;
   const age = document.getElementById('age-input').value;
   const photo = document.getElementById('photo-input').files[0];
+
+  const imageInput = document.getElementById('imageInput');
+const imagePreview = document.getElementById('imagePreview');
+
+imageInput.addEventListener('change', () => {
+  const file = imageInput.files[0];
+  const reader = new FileReader();
+  
+  reader.addEventListener('load', () => {
+    // Set the preview image source to the uploaded file
+    imagePreview.src = reader.result;
+    
+    // Upload the file to the server using AJAX or fetch()
+    uploadFile(file);
+  });
+  
+  // Read the uploaded file as a data URL
+  reader.readAsDataURL(file);
+});
+
+function uploadFile(file) {
+  // Make an AJAX or fetch() request to upload the file to the server
+  // Include any additional data you want to store, such as the user ID or a timestamp
+  // On successful upload, store the file name or URL in a database or other data store
+}
+
+window.addEventListener('load', () => {
+  // Get the list of file names or URLs from the database or other data store
+  const fileNames = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+  
+  fileNames.forEach((fileName) => {
+    // Create an image element for each file
+    const image = document.createElement('img');
+    image.src = `path/to/images/${fileName}`;
+    
+    // Add the image element to the page
+    document.body.appendChild(image);
+  });
+});
+
   
   // Clear the form fields
   form.reset();
