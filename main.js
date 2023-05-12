@@ -49,31 +49,36 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
-const fetchDogs = async (sortBy = 'id') => {
-    try {
-      const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
-      const dogs = await response.json();
-  
-      // Parse the age values as numbers before sorting
-      dogs.forEach(dog => {
-        dog.age = parseInt(dog.age);
-      });
-  
-      // Sort the dogs by age
-      dogs.sort((a, b) => a.age - b.age);
-  
-      displayDogs(dogs);
-    } catch (error) {
-      console.error(error);
+const fetchDogs = async (sortBy = 'id', sortOrder = 'asc') => {
+  try {
+    const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}&_order=${sortOrder}`);
+    const dogs = await response.json();
+
+    // Parse the age values as numbers before sorting
+    dogs.forEach(dog => {
+      dog.age = parseInt(dog.age);
+    });
+
+    // Sort the dogs by age
+    dogs.sort((a, b) => a.age - b.age);
+
+    if (sortOrder === 'desc') {
+      dogs.reverse();
     }
-  };
+
+    displayDogs(dogs);
+  } catch (error) {
+    console.error(error);
+  }
+};
   
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
 
 sortByAgeBtn.addEventListener('click',() => {
-  fetchDogs('age');
+  const sortOrder = document.getElementById('sort-order').value;
+  fetchDogs('age', sortOrder);
 });
 
 // Add dog button
