@@ -89,7 +89,7 @@ function sortDogsByAge() {
 }
 
 sortByAgeBtn.addEventListener('click',() => {
-  const sortOrder = document.getElementById('sort-order').value;
+  const sortOrder = document.getElementById('sort-by-age-select').value;
   fetchDogs('age', sortOrder);
 });
 
@@ -165,19 +165,21 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData();
     formData.append('image', file);
   
-    fetch('/upload', {
+    return fetch('/upload', {
       method: 'POST',
       body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-      // Store the file name or URL in a database or data store
-      storeImage(data.fileName);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Unable to upload image.');
+      }
+      return response.json();
     })
-    .catch(error => console.error(error));
+    .then(data => {
+      return data.url; // return the URL of the uploaded image
+    });
   }
   
-
   
   // Clear the form fields
   form.reset();
