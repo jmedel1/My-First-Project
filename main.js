@@ -61,14 +61,13 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
 
     // Sort the dogs by age if requested
     const sortDogsByAge = (dogs, order) => {
-      return dogs.sortDogsByAge((a, b) => {
-        if (order === "puppy-to-senior") {
-          return a.age - b.age;
-        } else if (order === "senior-to-puppy") {
-          return b.age - a.age;
-        }
-      });
+      if (order === "puppy-to-senior") {
+        return dogs.sort((a, b) => a.age - b.age);
+      } else if (order === "senior-to-puppy") {
+        return dogs.sort((a, b) => b.age - a.age);
+      }
     };
+    
   
     // Display the dogs
     displayDogs(dogs);
