@@ -49,6 +49,9 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
+const sortOrderSelect = document.querySelector('select[name="sort-order"]');
+const sortOrder = sortOrderSelect.value === "asc" ? false : true;
+
 const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
   try {
     const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}&_order=${sortDescending ? 'desc' : 'asc'}`);
