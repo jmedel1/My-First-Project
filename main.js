@@ -60,6 +60,7 @@ const fetchDogs = async (sortBy = 'id', sortOrder = 'asc') => {
     });
 
     function sortDogs() {
+      const ageSort = document.querySelector('input[name="age-sort"]:checked').value;
       dogs.sort(function(a, b) {
         if (ageSort === "young") {
           return parseInt(a.age) - parseInt(b.age);
@@ -67,14 +68,8 @@ const fetchDogs = async (sortBy = 'id', sortOrder = 'asc') => {
           return parseInt(b.age) - parseInt(a.age);
         }
       });
-      displayDogs();
-    }
-  } catch (error) {
-    console.error(error);
-  }
-
-  displayDogs(dogs);
-};
+      displayDogs(dogs);
+    }}};
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
