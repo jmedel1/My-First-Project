@@ -60,21 +60,36 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
     });
 
     // Sort the dogs by age if requested
-    function sortDogs() {
-      const sortOrderSelect = document.getElementById('sort-by-age-select');
-      const sortOrder = sortOrderSelect && sortOrderSelect.value === "senior-to-puppy" ? -1 : 1;
-      const ageSort = document.querySelector('input[name="age-sort"]:checked').value;
-    
-      dogs.sort(function(a, b) {
-        if (ageSort === "young") {
-          return (parseInt(a.age) - parseInt(b.age)) * sortOrder;
-        } else {
-          return (parseInt(b.age) - parseInt(a.age)) * sortOrder;
+    const sortDogsByAge = (dogs, order) => {
+      return dogs.sort((a, b) => {
+        if (order === "puppy-to-senior") {
+          return a.age - b.age;
+        } else if (order === "senior-to-puppy") {
+          return b.age - a.age;
         }
       });
-      
-      displayDogs(dogs);
-    }
+    };
+    
+    const sortByAgeBtn = document.getElementById("sort-by-age-btn");
+    const sortByAgeSelect = document.getElementById("sort-by-age-select");
+    const dogsList = document.getElementById("dogs-list");
+    
+    // Assume you have an array of dogs in this format
+    const dogs = [
+      { name: "Buddy", age: 2, photo: "buddy.jpg" },
+      { name: "Max", age: 6, photo: "max.jpg" },
+      { name: "Rocky", age: 4, photo: "rocky.jpg" },
+    ];
+    
+    // Initial render of the dog list
+    renderDogsList(dogsList, dogs);
+    
+    sortByAgeBtn.addEventListener("click", () => {
+      const order = sortByAgeSelect.value;
+      const sortedDogs = sortDogsByAge(dogs, order);
+      renderDogsList(dogsList, sortedDogs);
+    });
+    
 
     // Display the dogs
     displayDogs(dogs);
