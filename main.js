@@ -75,7 +75,7 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
 
     // Add event listener to the sort by age button
     const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-    sortByAgeBtn.addEventListener('click', sortDogs);
+    sortByAgeBtn.addEventListener('click', sortDogsByAge);
   } catch (error) {
     console.error(error);
   }
