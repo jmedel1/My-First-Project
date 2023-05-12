@@ -69,38 +69,31 @@ const fetchDogs = async (sortBy = 'id', sortDescending = false) => {
       return dogs; // Return the original array if no order is specified
     };
 
+
     // Sort the dogs by age if requested
-    const sortedDogs = sortDogsByAge(dogs, 'puppy-to-senior');
-
-    // Display the dogs
-    displayDogs(sortedDogs);
-
-    // Add event listener to the sort by age button
-    const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-    sortByAgeBtn.addEventListener('click', () => {
-      const order = document.getElementById('age-sort-order').value;
+    const sortOrderSelect = document.getElementById('sort-by-age-select');
+    sortOrderSelect.addEventListener('change', () => {
+      const order = sortOrderSelect.value;
       const sortedDogs = sortDogsByAge(dogs, order);
       displayDogs(sortedDogs);
     });
 
+    // Display the dogs
+    displayDogs(dogs);
+
   } catch (error) {
     console.error(error);
-  };
+  }
 };
 
 
-
-// Add sort by age button
+// Add event listener to the sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-function sortDogsByAge() {
-  let sortOrder = document.getElementById("sort-by-age-select").value;
-  fetchDogs('age', sortOrder === "senior-to-puppy");
-}
-
 sortByAgeBtn.addEventListener('click',() => {
   const sortOrder = document.getElementById('sort-by-age-select').value;
-  fetchDogs('age', sortOrder);
+  fetchDogs('age', sortOrder === "senior-to-puppy");
 });
+
 
 // Add dog button
 const addDogBtn = document.getElementById('add-dog-form');
