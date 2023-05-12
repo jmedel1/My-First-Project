@@ -69,7 +69,16 @@ const fetchDogs = async (sortBy = 'id', sortOrder = 'asc') => {
         }
       });
       displayDogs(dogs);
-    }}};
+    }
+
+    const sortButton = document.getElementById('sort-btn');
+    sortButton.addEventListener('click', sortDogs);
+
+    displayDogs(dogs);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
