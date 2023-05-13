@@ -54,27 +54,31 @@ const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder = '') => {
     const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
     const dogs = await response.json();
 
-    // Sort the dogs by age
-    dogs.sort((a, b) => a.age - b.age);
-    
+    if (sortOrder === 'puppy-to-senior') {
+      dogs.sort((a, b) => a.age - b.age);
+    } else if (sortOrder === 'senior-to-puppy') {
+      dogs.sort((a, b) => b.age - a.age);
+    }
+
     if (reverse) {
       dogs.reverse();
     }
 
     displayDogs(dogs);
-
-    // Make a recursive call to fetchDogs() if sortOrder is provided
-    if (sortOrder) {
-      fetchDogs('age', false, 'senior-to-puppy');
-    }
   } catch (error) {
     console.error(error);
   }
 };
 
-fetchDogs();
+const sortByAgeBtn = document.querySelector('#sort-by-age-btn');
+const sortByAgeSelect = document.querySelector('#sort-by-age-select');
 
-  
+sortByAgeBtn.addEventListener('click', () => {
+  const sortOrder = sortByAgeSelect.value;
+  fetchDogs('age', false, sortOrder);
+});
+
+ 
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
