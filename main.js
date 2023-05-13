@@ -70,6 +70,8 @@ const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder = '') => {
   }
 };
 
+fetchDogs();
+
 const sortByAgeSelect = document.querySelector('#sort-by-age-select');
  
 
