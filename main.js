@@ -112,8 +112,7 @@ addDogBtn.addEventListener('submit', (event) => {
     })
     .then(data => {
       // Add the new dog to the dogs array and display all dogs
-      dogs.push(data);
-      displayDogs(dogs);
+     fetchDogs();
     })
     .catch(error => {
       console.error(error);
