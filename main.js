@@ -16,6 +16,7 @@ const displayDogs = (dogs) => {
     removeBtn.addEventListener('click', () => {
       removeDog(li, dog.id);
     });
+    li.appendChild(removeBtn);
 
     // Add photo
     if (dog.photoUrl) {
