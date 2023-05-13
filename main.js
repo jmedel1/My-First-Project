@@ -67,14 +67,12 @@ const fetchDogs = async (sortBy = 'id', reverse = false) => {
 // Add sort by age button
 const sortByAgeSelect = document.querySelector('#sort-by-age-select');
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-const sortOrder = sortByAgeSelect.value;
-
-fetchDogs('age', sortOrder.value = 'senior-to-puppy');
-
 
 sortByAgeBtn.addEventListener('click', () => {
   const sortOrder = sortByAgeSelect.value;
 });
+
+fetchDogs('age', sortOrder.value = 'senior-to-puppy');
 
 // Add dog button
 const addDogBtn = document.getElementById('add-dog-form');
