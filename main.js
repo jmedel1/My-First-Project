@@ -72,7 +72,7 @@ const sortByAgeBtn = document.getElementById('sort-by-age-btn');
 
 
 sortByAgeBtn.addEventListener('click', () => {
-  const sortOrder = sortByAgeSelect.value;
+  const sortOrder = sortByAgeSelect;
   fetchDogs('age', sortOrder.value === 'senior-to-puppy');
 });
 
