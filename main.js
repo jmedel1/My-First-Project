@@ -70,21 +70,15 @@ const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder = '') => {
   }
 };
 
-const sortByAgeBtn = document.querySelector('#sort-by-age-btn');
 const sortByAgeSelect = document.querySelector('#sort-by-age-select');
-
-sortByAgeBtn.addEventListener('click', () => {
-  const sortOrder = sortByAgeSelect.value;
-  fetchDogs('age', false, sortOrder);
-});
-
  
 
 // Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
 
-sortByAgeBtn.addEventListener('click',() => {
-  fetchDogs('age');
+sortByAgeBtn.addEventListener('click', () => {
+  const sortOrder = sortByAgeSelect.value;
+  fetchDogs('age', false, sortOrder);
 });
 
 // Add dog button
