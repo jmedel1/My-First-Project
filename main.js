@@ -49,16 +49,14 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
-const fetchDogs = async (sortBy = 'id') => {
+const fetchDogs = async (sortBy = 'id', reverse = false) => {
     try {
       const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
       const dogs = await response.json();
   
-      // Parse the age values as numbers before sorting
-      dogs.forEach(dog => {
-        dog.age = parseInt(dog.age);
-      });
-  
+if(reverse) {
+  dogs.reverse();
+}
       // Sort the dogs by age
       dogs.sort((a, b) => a.age - b.age);
   
