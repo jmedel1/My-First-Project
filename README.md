@@ -15,7 +15,7 @@ Woof Pixels is a dog application where users can upload photos of their furry fr
 
 ## Usage
 
-1. To upload a photo of your dog, click on the "Upload" button on the homepage.
+1. To upload a photo of your dog, click on the "Choose File" button on the homepage.
 2. Enter your dog's name and age in the respective fields.
 3. Click on "Add Dog" to upload your dog's photo to the platform.
 4. To filter dogs by age, select the desired age range from the dropdown menu on the homepage.
