@@ -49,42 +49,32 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
-const fetchDogs = async (sortBy = 'id', reverse = false, order = null) => {
-  try {
-    const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}&_order=${reverse ? 'desc' : 'asc'}`);
-    const dogs = await response.json();
+const fetchDogs = async (sortBy = 'id') => {
+    try {
+      const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
+      const dogs = await response.json();
+  
+      // Parse the age values as numbers before sorting
+      dogs.forEach(dog => {
+        dog.age = parseInt(dog.age);
+      });
+  
+      // Sort the dogs by age
+      dogs.sort((a, b) => a.age - b.age);
+  
+      displayDogs(dogs);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
 
-    // Parse the age values as numbers before sorting
-    dogs.forEach(dog => {
-      dog.age = parseInt(dog.age);
-    });
-
-    const sortDogsByAge = (dogs, order) => {
-      if (order === "puppy-to-senior") {
-        return dogs.sort((a, b) => a.age - b.age);
-      } else if (order === "senior-to-puppy") {
-        return dogs.sort((a, b) => b.age - a.age);
-      }
-      return dogs; // Return the original array if no order is specified
-    };
-    
-
- // Display the dogs
-    displayDogs(dogs);
-
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-// Add event listener to the sort by age button
+// Add sort by age button
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
-sortByAgeBtn.addEventListener('click',() => {
-  const sortOrder = document.getElementById('sort-by-age-select').value;
-  fetchDogs('age', sortOrder === "senior-to-puppy");
-});
 
+sortByAgeBtn.addEventListener('click',() => {
+  fetchDogs('age');
+});
 
 // Add dog button
 const addDogBtn = document.getElementById('add-dog-form');
@@ -152,27 +142,6 @@ form.addEventListener('submit', (event) => {
   const name = document.getElementById('name-input').value;
   const age = document.getElementById('age-input').value;
   const photo = document.getElementById('photo-input').files[0];
-
-  //Keep images from dissapearing
-  function uploadFile(file) {
-    const formData = new FormData();
-    formData.append('image', file);
-  
-    return fetch('/upload', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Unable to upload image.');
-      }
-      return response.json();
-    })
-    .then(data => {
-      return data.url; // return the URL of the uploaded image
-    });
-  }
-  
   
   // Clear the form fields
   form.reset();
