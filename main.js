@@ -14,9 +14,8 @@ const displayDogs = (dogs) => {
     removeBtn.textContent = 'Remove';
     removeBtn.classList.add('remove');
     removeBtn.addEventListener('click', () => {
-      removeDog(dog.id);
+      removeDog(li, dog.id);
     });
-    li.appendChild(removeBtn);
 
     // Add photo
     if (dog.photoUrl) {
@@ -30,7 +29,7 @@ const displayDogs = (dogs) => {
 }
 
 // Remove dogs name
-const removeDog = (id) => {
+const removeDog = (li, id) => {
   fetch(`http://localhost:3000/posts/${id}`, {
     method: 'DELETE'
   })
@@ -38,16 +37,12 @@ const removeDog = (id) => {
     if (!response.ok) {
       throw new Error('Unable to remove dog.');
     }
-    return response.json();
-  })
-  .then(data => {
-    fetchDogs();
+    li.remove(); // remove the li element from the DOM
   })
   .catch(error => {
     console.error(error);
   });
 }
-
 // Fetch dogs data from the server
 const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder = '') => {
   try {
@@ -69,8 +64,6 @@ const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder = '') => {
     console.error(error);
   }
 };
-
-fetchDogs();
 
 const sortByAgeSelect = document.querySelector('#sort-by-age-select');
  
