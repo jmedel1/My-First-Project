@@ -9,14 +9,14 @@ const displayDogs = (dogs) => {
     const li = document.createElement('li');
     li.textContent = `Name: ${dog.name}, Age: ${dog.age}`;
 
-    // Add a remove button
-    const removeBtn = document.createElement('button');
-    removeBtn.textContent = 'Remove';
-    removeBtn.classList.add('remove');
-    removeBtn.addEventListener('click', () => {
-      removeDog(li, dog.id);
-    });
-    li.appendChild(removeBtn);
+  // Add a remove button
+  const removeBtn = document.createElement('button');
+  removeBtn.textContent = 'Remove';
+  removeBtn.classList.add('remove');
+  removeBtn.addEventListener('click', () => {
+     removeDog(dog.id);
+     });
+     li.appendChild(removeBtn);
 
     // Add photo
     if (dog.photoUrl) {
@@ -30,7 +30,7 @@ const displayDogs = (dogs) => {
 }
 
 // Remove dogs name
-const removeDog = (li, id) => {
+const removeDog = (id) => {
   fetch(`http://localhost:3000/posts/${id}`, {
     method: 'DELETE'
   })
@@ -38,12 +38,16 @@ const removeDog = (li, id) => {
     if (!response.ok) {
       throw new Error('Unable to remove dog.');
     }
-    li.remove(); // remove the li element from the DOM
+    return response.json();
+  })
+  .then(data => {
+    fetchDogs();
   })
   .catch(error => {
     console.error(error);
   });
 }
+
 // Fetch dogs data from the server
 const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder = '') => {
   try {
