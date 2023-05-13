@@ -63,16 +63,19 @@ const fetchDogs = async (sortBy = 'id', reverse = false) => {
     console.error(error);
   }
 };
+
+fetchDogs();
  
 // Add sort by age button
 const sortByAgeSelect = document.querySelector('#sort-by-age-select');
 const sortByAgeBtn = document.getElementById('sort-by-age-btn');
 
+
 sortByAgeBtn.addEventListener('click', () => {
   const sortOrder = sortByAgeSelect.value;
+  fetchDogs('age', sortOrder.value === 'senior-to-puppy');
 });
 
-fetchDogs('age', sortOrder.value = 'senior-to-puppy');
 
 // Add dog button
 const addDogBtn = document.getElementById('add-dog-form');
