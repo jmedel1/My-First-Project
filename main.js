@@ -49,7 +49,8 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
-const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder) => {
+const fetchDogs = async (sortBy = 'id', reverse = false) => {
+  let sortOrder = '';
     try {
       const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
       const dogs = await response.json();
