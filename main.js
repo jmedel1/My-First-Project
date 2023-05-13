@@ -49,22 +49,27 @@ const removeDog = (id) => {
 }
 
 // Fetch dogs data from the server
-const fetchDogs = async (sortBy = 'id', reverse = false) => {
+const fetchDogs = async (sortBy = 'id', reverse = false, sortOrder) => {
     try {
       const response = await fetch(`http://localhost:3000/posts?_sort=${sortBy}`);
       const dogs = await response.json();
+
   
 if(reverse) {
   dogs.reverse();
 }
       // Sort the dogs by age
       dogs.sort((a, b) => a.age - b.age);
+
+      fetchDogs('age', sortOrder.value = 'senior-to-puppy');
   
       displayDogs(dogs);
     } catch (error) {
       console.error(error);
     }
   };
+
+  fetchDogs();
   
 
 // Add sort by age button
